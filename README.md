@@ -2,7 +2,8 @@
 
 web VR and AR demos using the following libraries:
 
-- three.js
+- three.js: https://threejs.org/
+- A-Frame: https://aframe.io/
 
 ## Run demo
 

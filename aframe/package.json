@@ -1,0 +1,19 @@
+{
+  "name": "aframe",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite ./src",
+    "build": "vite build ./src",
+    "preview": "vite preview ./src",
+    "format": "prettier */**/*.{html,js} --write",
+    "lint": "eslint './src/**/*.{js,html}'"
+  },
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-plugin-html": "^7.0.0",
+    "prettier": "^2.7.1",
+    "vite": "^3.0.0"
+  }
+}
