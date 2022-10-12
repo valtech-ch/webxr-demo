@@ -3,7 +3,7 @@ import {
   createScene,
   createCamera,
   createLights,
-  createShere,
+  createSphere,
   createVrRenderer,
   createBox,
   createInteractivityControls,
@@ -14,7 +14,7 @@ const scene = createScene();
 const camera = createCamera();
 const lights = createLights();
 const box = createBox();
-const sphere = createShere();
+const sphere = createSphere();
 const renderer = createVrRenderer(); // new renderer
 scene.add(...lights, box, sphere);
 setupWindowResize(camera, renderer);
