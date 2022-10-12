@@ -1,0 +1,28 @@
+{
+  "name": "react-three",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite ./src",
+    "build": "vite build ./src",
+    "preview": "vite preview ./src",
+    "format": "prettier */**/*.{html,js} --write",
+    "lint": "eslint './src/**/*.jsx'"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.17.2",
+    "@react-three/fiber": "^8.2.0",
+    "@react-three/xr": "^4.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.142.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^2.0.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-react": "^7.30.1",
+    "prettier": "^2.7.1",
+    "vite": "^3.0.0"
+  }
+}

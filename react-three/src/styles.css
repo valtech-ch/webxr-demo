@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+}
+
+.back-button {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: darkred;
+  border: 1px solid darkred;
+  padding: 5px;
+  font-size: 20px;
+  z-index: 1;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
