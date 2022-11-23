@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, "dist"),
     rollupOptions: {
-      input: glob.sync(resolve(__dirname, "src", "*.html")),
+      input: glob.sync(resolve(__dirname, "src", "**", "*.html")),
     },
   },
   // server: {
