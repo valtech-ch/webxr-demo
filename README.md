@@ -1,9 +1,10 @@
 # webxr-demo
 
-web VR and AR demos using the following libraries:
+Web VR and AR demos using the following libraries:
 
 - three.js: https://threejs.org/
 - A-Frame: https://aframe.io/
+- React Three Fiber: https://docs.pmnd.rs/react-three-fiber/
 
 ## Run demo
 
