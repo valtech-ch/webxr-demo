@@ -16,7 +16,7 @@ const sphere = createArSphere();
 scene.add(...lights, sphere);
 
 const renderer = createArRenderer(); // new renderer
-setupWindowResize(camera, renderer);
+setupWindowResize(camera, renderer, scene);
 
 const controller = renderer.xr.getController(0); // new XR controller
 controller.addEventListener("select", () => {

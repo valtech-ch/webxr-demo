@@ -4,7 +4,6 @@ import { defineConfig } from "vite";
 import glob from "glob";
 
 export default defineConfig({
-  // plugins: [basicSsl()],
   root: resolve(__dirname, "src"),
   build: {
     outDir: resolve(__dirname, "dist"),
@@ -12,8 +11,10 @@ export default defineConfig({
       input: glob.sync(resolve(__dirname, "src", "**", "*.html")),
     },
   },
-  // server: {
-  //   https: true,
-  //   host: "0.0.0.0",
-  // },
+  // plugins: [basicSsl()],
+  server: {
+    port: 1234,
+    // https: true,
+    // host: "0.0.0.0",
+  },
 });

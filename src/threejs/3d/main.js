@@ -8,20 +8,34 @@ import {
   setupWindowResize,
 } from "../helper/createBasicScene";
 
+// Scene: object that includes everything to display
 const scene = createScene();
+
+// Renderer: displays scenes using WebGL
+const renderer = create2DRenderer();
+
+// Camera: viewers perspective
 const camera = createCamera();
+
+// Light (one or many): needed to see the objects
 const lights = createLights();
+
+// Mesh object to display (consists of a geometry and a material)
 const box = createBox();
 const sphere = createSphere();
-const renderer = create2DRenderer();
-scene.add(...lights, box, sphere);
-setupWindowResize(camera, renderer);
 
+// Combine everything
+scene.add(...lights, box, sphere);
+renderer.render(scene, camera);
+document.body.appendChild(renderer.domElement);
+
+// Allow resizing
+setupWindowResize(camera, renderer, scene);
+
+// Add rotation
 const animate = () => {
   requestAnimationFrame(animate);
   sphere.rotation.y += 0.005;
   renderer.render(scene, camera);
 };
 animate();
-
-document.body.appendChild(renderer.domElement);

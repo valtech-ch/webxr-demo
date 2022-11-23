@@ -16,6 +16,7 @@
     "vite": "^3.2.4"
   },
   "dependencies": {
-    "three": "^0.146.0"
+    "three": "^0.146.0",
+    "webxr-polyfill": "^2.0.3"
   }
 }

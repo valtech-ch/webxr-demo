@@ -113,11 +113,12 @@ export const createInteractivityControls = (camera, renderer) => {
   return controls;
 };
 
-export const setupWindowResize = (camera, renderer) => {
+export const setupWindowResize = (camera, renderer, scene) => {
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.render(scene, camera);
   });
 };
 

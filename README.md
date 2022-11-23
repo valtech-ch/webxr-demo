@@ -8,24 +8,23 @@ Web VR and AR demos using the following libraries:
 
 ## Run demo
 
-1. Navigate into a project folder
-
-```sh
-cd <project-name>
-cd threejs
-```
-
-2. Install the dependencies
+1. Install the dependencies
 
 ```sh
 npm install
 ```
 
-3. Run the code locally
+2. Run the dev command
 
 ```sh
 npm run dev
 ```
+
+3. Open http://localhost:1234/
+
+## Enable HTTPS on localhost
+
+Open `vitest.config.js` and uncomment the settings for `plugins`, `https` and `host`.
 
 ## Connect to Chrome on an Android device
 
@@ -36,29 +35,3 @@ npm run dev
 5. Enable port forwarding: https://developer.chrome.com/docs/devtools/remote-debugging/local-server/
 6. Open Google Chrome on the phone
 7. Visit local URL on the phone
-
-## Project setup
-
-1. Create project code:
-
-```sh
-npm create vite@latest
-> Project name: threejs
-> Select a framework: vanilla
-> Select a variant: vanilla
-
-```
-
-2. Install the dependencies
-
-```sh
-cd threejs
-npm install
-npm run dev
-```
-
-3. Run the code locally
-
-```sh
-npm run dev
-```

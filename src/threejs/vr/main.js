@@ -10,6 +10,8 @@ import {
   setupWindowResize,
 } from "../helper/createBasicScene";
 
+// https://threejs.org/docs/#manual/en/introduction/How-to-create-VR-content
+
 const scene = createScene();
 const camera = createCamera();
 const lights = createLights();
@@ -17,7 +19,7 @@ const box = createBox();
 const sphere = createSphere();
 const renderer = createVrRenderer(); // new renderer
 scene.add(...lights, box, sphere);
-setupWindowResize(camera, renderer);
+setupWindowResize(camera, renderer, scene);
 
 const controls = createInteractivityControls(camera, renderer); // move around object
 
@@ -30,4 +32,11 @@ const animate = () => {
 animate();
 
 document.body.appendChild(renderer.domElement);
-document.body.appendChild(VRButton.createButton(renderer)); // add VR button
+
+// VR button creates a WebXR Device API session
+document.body.appendChild(VRButton.createButton(renderer));
+
+// Polyfill is available, but does not work only work for devices with WebVR support
+// -> iPhones are not supported
+// import WebXRPolyfill from "webxr-polyfill";
+// new WebXRPolyfill();
