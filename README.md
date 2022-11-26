@@ -24,7 +24,7 @@ npm run dev
 
 ## Enable HTTPS on localhost
 
-Open `vitest.config.js` and uncomment the settings for `plugins`, `https` and `host`.
+Open `vitest.config.ts` and set `EXPOSE_TO_LOCAL_NETWORK` to `true`.
 
 ## Connect to Chrome on an Android device
 

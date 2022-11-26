@@ -1,6 +1,7 @@
 import { resolve } from "node:path";
 import { defineConfig, mergeConfig, UserConfigExport } from "vite";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import react from "@vitejs/plugin-react";
 import glob from "glob";
 
 const EXPOSE_TO_LOCAL_NETWORK = true;
@@ -16,6 +17,7 @@ const baseConfig: UserConfigExport = {
   server: {
     port: 1234,
   },
+  plugins: [react()],
 };
 
 const exposeToLocalNetworkConfig: UserConfigExport = {

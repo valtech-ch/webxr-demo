@@ -1,0 +1,14 @@
+extends:
+  - ../../.eslintrc.yml
+  - plugin:react/recommended
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+plugins:
+  - react
+settings:
+  react:
+    version: detect
+rules:
+  react/no-unknown-property: [error, ignore: [args, attach, intensity, position, rotation, visible, wireframe]]
+  react/react-in-jsx-scope: [off]
