@@ -19,10 +19,12 @@ const reticle = createReticle(); // indicate where object can be placed
 scene.add(light, reticle);
 
 const renderer = createArRenderer();
-setupWindowResize(camera, renderer);
+setupWindowResize(camera, renderer, scene);
 
 const controller = renderer.xr.getController(0);
-const createCylinder = getCylinderCreationFn();
+const createCylinder = getCylinderCreationFn(); // mesh factory function
+
+// place cylinder in the room when hit result is found / reticle is visible
 controller.addEventListener("select", () => {
   // only visible when surface was detected
   if (reticle.visible) {
@@ -34,8 +36,12 @@ controller.addEventListener("select", () => {
 });
 scene.add(controller);
 
+// function to run after ARButton has requested the WebXR session
 const hitTestingRenderFn = setupHitTestingRendering(renderer, reticle, scene, camera);
 renderer.setAnimationLoop(hitTestingRenderFn);
 
 document.body.appendChild(renderer.domElement);
-document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ["hit-test"] })); // add required feature
+
+// Enable hit testing features for performing hit tests against real world geometry.
+// https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession
+document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ["hit-test"] }));

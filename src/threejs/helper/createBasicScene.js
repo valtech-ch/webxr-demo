@@ -80,8 +80,8 @@ export const createReticle = () => {
   geometry.rotateX(-Math.PI / 2); // -90deg
   const material = new MeshBasicMaterial(); // no light reflection
   const reticle = new Mesh(geometry, material);
-  reticle.matrixAutoUpdate = false;
-  reticle.visible = false;
+  reticle.matrixAutoUpdate = false; // disable calculations where object is in the room
+  reticle.visible = false; // don't display until hit result is found
   return reticle;
 };
 
@@ -122,18 +122,24 @@ export const setupWindowResize = (camera, renderer, scene) => {
   });
 };
 
+/**
+ * @param {WebGLRenderer} renderer
+ */
 export const setupHitTestingRendering = (renderer, reticle, scene, camera) => {
   let hitTestSource = null;
   let hitTestSourceRequested = false;
 
+  /**
+   * @type XRFrameRequestCallback
+   */
   const renderFn = (_timestamp, frame) => {
     if (frame) {
       // get coordinate system from the users environment
       const referenceSpace = renderer.xr.getReferenceSpace();
-      // ongoing XR session, providing methods and properties used to interact with and control the session (MDN)
       const session = renderer.xr.getSession();
 
       if (!hitTestSourceRequested) {
+        // An XRReferenceSpace tracking space whose native origin tracks the viewer's position
         // https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestReferenceSpace
         session.requestReferenceSpace("viewer").then((referenceSpace) => {
           session.requestHitTestSource({ space: referenceSpace }).then((source) => {
@@ -155,12 +161,14 @@ export const setupHitTestingRendering = (renderer, reticle, scene, camera) => {
         // result: [XRHitTestResult] 1 or more
         const hitTestResults = frame.getHitTestResults(hitTestSource);
 
+        // check if position was found to place object in the room
         if (hitTestResults.length) {
           const hit = hitTestResults[0];
 
           // a three dimensional position and orientation in a three dimensional coordinate system
           const pose = hit.getPose(referenceSpace);
 
+          // update reticle position and display it
           reticle.matrix.fromArray(pose.transform.matrix);
           reticle.visible = true;
         } else {
